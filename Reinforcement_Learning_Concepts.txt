@@ -1,0 +1,63 @@
+Reinforcement Learning
+
+State S => Action A
+
+Reward function
+    Positive reward: +1 
+    Negative reward: -1000
+
+Need to create a policy pi that maps a state S to an action A 
+
+Examples
+
+pi(S) = A
+pi(2) = Go Left
+pi(3) = Go Left
+pi(4) = Go Left
+pi(5) = Go Right 
+
+
+From a Fin Tea perspective, the rewards are dynamic and determined by the trader/investor. From a trading standpoint for myself, NQ is a good reward (in general) because I've earned rewards of $100s while trading it. From an investing standpoint AMZN is a good reward (in general) because I earned $950 from an almost year-long investment. 
+
+
+RL Components
+
+States
+Actions
+Rewards
+Discount Factor 
+Return
+Policy
+
+Set rewards to: +1 on profitable trade, 0 on break-even, and -100 on loss(?)
+
+Or are the rewards the actual profits & losses themselves, which feels way more intuitive 
+
+Markov Decision Process (MDP)
+
+Agent -> Action -> Enviroment/World -> State S & Reward R -> Agent 
+
+State Action Value Function (Q)
+
+Q is a function of the current state S and the action to take A => Q(S, A). Q(S, A) is the (most probable) return if you start in state S and take action A once. Behave optimally afterwards
+
+The question is, what is the reward of each action/decision towards a reward
+
+Bellman equation: Q(s,a) = R(s) + ÿ * maxQ(s',a')
+
+Neural network will map X (Q(s,a)) to Y (R(s) + ÿ * maxQ(s',a')
+
+f_w_b(X) ~= Y
+Some state S and Action A lead to a Reward R and a new State S', where the original state S includes the current account balance and the new state S' includes the new account balance
+
+Fundamentally this is the right approach. It's in alignment with reality and says we must try things in the beginning. Some things will work. Some things won't work. There will be wins. There will be losses. We must keep track of our wins & losses so we can maximize our wins and minimize our losses (80/20 principle)
+
+y_1 = R(S_1) + ÿ * maxQ(S'_1, a'_1) => y_1 is the reward at State 1 plus the maximum reward of the next state and actions, which are the Rewards of S_2. Same for y_2 being calculated based on rewards from S_2 and maxQ of S_3
+
+We don't know what the Q function is so we guess 
+
+10,000 examples of training data are suggested (#keepGoing!) (This is the replay buffer!)
+
+This is a Deep Q Network because we're training the neural network to learn Q based on the input states and actions
+
+Training a single neural network to output all of the actions
